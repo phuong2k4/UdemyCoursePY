@@ -55,6 +55,7 @@
 # else:
 #     print("Your score is " + str(totalOfAll))
 
+#last solution
 print("Welcome to treasure Island. Your mission is to find the treasure.")
 cross_road = str(input("You're at a cross road. Where are you want to go? Left or Right?\n"))
 
@@ -70,3 +71,4 @@ if cross_road == "left":
         print("Game Over")
 else:
     print("Dumb")
+
