@@ -1,6 +1,5 @@
 import random
-import hangman_art
-import hangman_words
+from ExtentionD7 import hangman_words, hangman_art
 
 # TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
 chosen_word = random.choice(hangman_words.word_list)
