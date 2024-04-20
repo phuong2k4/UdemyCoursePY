@@ -109,3 +109,34 @@
 #
 # print(f"I had went to {travel_log[2]['country']} {travel_log[2]['total']} times")
 
+
+#solution Day 9
+
+from replit import clear
+
+from ExtentionD9 import art
+print(art.logo)
+
+bid_of_name = {}
+conditional = False
+
+def find_high_scores(bid_input):
+    max = 0
+    winner = ""
+    for ind in bid_input:
+        bid_amount = int(bid_input[ind])
+        if bid_amount > max:
+            max = bid_amount
+            winner = ind
+    print(f"The winner is {winner} with {max}. ")
+while not conditional:
+    name = input("Whats your name? ")
+    bid = input("Whats your bid? ")
+    bid_of_name[name] = bid
+    bidders = input("Are there any bidders? Type y or n. ")
+    if bidders == "y":
+        clear()
+        conditional = False
+    elif bidders == "n":
+        conditional = True
+        find_high_scores(bid_of_name)
