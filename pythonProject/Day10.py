@@ -47,16 +47,46 @@ def dev(num1, num2):
     return num1 / num2
 
 num1 = int(input("Whats the first number? "))
-operation = str(input("Pick an operation: "))
-num2 = int(input("How about the second number? "))
 
-if operation == "+":
-    print(f"{num1} {operation} {num2} = {add(num1,num2)}")
-elif operation == "-":
-    print(f"{num1} {operation} {num2} = {sub(num1,num2)}")
-elif operation == "*":
-    print(f"{num1} {operation} {num2} = {muti(num1, num2)}")
-elif operation == "/":
-    print(f"{num1} {operation} {num2} = {dev(num1, num2)}")
+
+# if operation == "+":
+#     print(f"{num1} {operation} {num2} = {add(num1,num2)}")
+# elif operation == "-":
+#     print(f"{num1} {operation} {num2} = {sub(num1,num2)}")
+# elif operation == "*":
+#     print(f"{num1} {operation} {num2} = {muti(num1, num2)}")
+# elif operation == "/":
+#     print(f"{num1} {operation} {num2} = {dev(num1, num2)}")
+
+operator_symbol = {
+    "+": add,
+    "-": sub,
+    "*": muti,
+    "/": dev
+}
+
+for symbol in operator_symbol:
+    print(symbol)
+
+
+
+
+condition = False
+
+
+while not condition:
+    num2 = int(input("How about the next number? "))
+    operation = input("Pick an operation: ")
+    my_operation = operator_symbol[operation]
+    answer = my_operation(num1, num2)
+    print(f"{num1} {operation} {num2} = {answer}")
+
+    continue_user = input("y to continue calculating. n to start a new calculation. ")
+    if continue_user == "y":
+        num1 = answer
+        condition = False
+    elif continue_user == "n":
+        condition = True
+
 
 
