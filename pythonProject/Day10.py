@@ -37,6 +37,7 @@
 
 #solution Caculator:
 
+from ExtentionD10 import art
 def add(num1, num2):
     return num1 + num2
 def sub(num1, num2):
@@ -45,9 +46,6 @@ def muti(num1, num2):
     return num1 * num2
 def dev(num1, num2):
     return num1 / num2
-
-num1 = int(input("Whats the first number? "))
-
 
 # if operation == "+":
 #     print(f"{num1} {operation} {num2} = {add(num1,num2)}")
@@ -65,28 +63,28 @@ operator_symbol = {
     "/": dev
 }
 
-for symbol in operator_symbol:
-    print(symbol)
+def calculator():
+    print(art.logo)
+    num1 = int(input("Whats the first number? "))
+    for symbol in operator_symbol:
+        print(symbol)
+    condition = False
 
+    while not condition:
+        num2 = int(input("How about the next number? "))
+        operation = input("Pick an operation: ")
+        my_operation = operator_symbol[operation]
+        answer = my_operation(num1, num2)
+        print(f"{num1} {operation} {num2} = {answer}")
 
+        continue_user = input("y to continue calculating. n to start a new calculation. ")
+        if continue_user == "y":
+            num1 = answer
+            condition = False
+        elif continue_user == "n":
+            condition = True
+            calculator()
 
-
-condition = False
-
-
-while not condition:
-    num2 = int(input("How about the next number? "))
-    operation = input("Pick an operation: ")
-    my_operation = operator_symbol[operation]
-    answer = my_operation(num1, num2)
-    print(f"{num1} {operation} {num2} = {answer}")
-
-    continue_user = input("y to continue calculating. n to start a new calculation. ")
-    if continue_user == "y":
-        num1 = answer
-        condition = False
-    elif continue_user == "n":
-        condition = True
-
+calculator()
 
 
