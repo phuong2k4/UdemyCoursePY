@@ -26,6 +26,8 @@ def game_play():
             against = random.choice(Data.data)
             point += 1
             print(f"Current score: {point}")
+        elif compareA == against:
+            against = random.choice(Data.data)
         else:
             print("Lose")
             end_game = True
