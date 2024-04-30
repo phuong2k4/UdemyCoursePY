@@ -93,5 +93,5 @@ while game:
         drink = menu[choice]
         if make_coffee(drink["ingredients"]):
             cash_general = cash_machine()
-            if transfer_cash(cash_general,drink["cost"]):
-                coffee_machine(choice,drink["ingredients"])
+            if transfer_cash(cash_general, drink["cost"]):
+                coffee_machine(choice, drink["ingredients"])

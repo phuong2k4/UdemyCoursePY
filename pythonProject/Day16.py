@@ -47,3 +47,27 @@
 
 # coffee machine use oop or object-oriented-programming
 
+from ExDay16.menu import Menu, MenuItem
+from ExDay16.make_coffee import CoffeeMaker
+from ExDay16.money_machine import MoneyMachine
+
+money_machine = MoneyMachine()
+make_coffee = CoffeeMaker()
+
+menu = Menu()
+is_loop = True
+
+while is_loop:
+    options = menu.get_items()
+    print("Can i help you about menu or something The coffee house?")
+    choice = input(f"{options}? Lets take one and enjoy: ")
+    if choice == "report":
+        make_coffee.report()
+        money_machine.report()
+    elif choice == "off":
+        is_loop = False
+    else:
+        drink = menu.find_drink(choice)
+        if make_coffee.is_resource_sufficient(drink):
+            money_machine.make_payment(drink.cost)
+            make_coffee.make_coffee(drink)
