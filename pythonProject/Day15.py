@@ -27,7 +27,7 @@ menu = {
         },
         "cost": 2.5
     },
-    "capuchino": {
+    "cappuccino": {
         "ingredients": {
             "water": 250,
             "milk": 100,
@@ -40,67 +40,58 @@ menu = {
 resource = {
     "water": 300,
     "milk": 200,
-    "coffee": 100
+    "coffee" : 100
 }
+cost = 0
 
-profit = 0
-def make_coffee_machine(item_coffee):
-    """This function check resource have enough or no"""
-    for item in item_coffee:
-        if item_coffee[item] >= resource[item]:
-            print("Sorry there is enough material. ")
-            return False
-        else:
-            return True
-
-
-def money_machine():
-    """This function return total money when user insert cash or coin"""
+def cash_machine():
     total = 0
-    print("Just give me my money....")
-    total += int(input("How many quarter? Insert: ")) * 0.25
-    total += int(input("How many dimes? Insert: ")) * 0.10
-    total += int(input("How many nickles? Insert: ")) * 0.5
-    total += int(input("How many pennis? Insert: ")) * 0.01
+    print("How much money do you have right now sir?")
+    total += int(input("You got Quarter. Insert: ")) * 0.25
+    total += int(input("You got Dime. Insert: ")) * 0.10
+    total += int(input("You got Dime. Insert: ")) * 0.5
+    total += int(input("You got Dime. Insert: ")) * 0.01
     return total
 
+def make_coffee(choice_drink):
+    for item in choice_drink:
+        if choice_drink[item] > resource[item]:
+            print(f"Sorry, not enough {item}.")
+            return False
+    return True
 
-def transfer_confirm(money_have, menu_cost):
-    """Function will return true if money user have is equal or greater than menu cost"""
-    if money_have >= menu_cost:
-        change = round(money_have - menu_cost, 2)
-        print(f"Here is ${change} in change. ")
-        global profit
-        profit += money_have
+def coffee_machine(drink_choice, offer_menu):
+    for item in offer_menu:
+        resource[item] -= offer_menu[item]
+    print(f"Enjoy! {drink_choice}")
+
+def transfer_cash(user_money_have, menu_cost_item):
+    if user_money_have >= menu_cost_item:
+        change_money_computer = round(user_money_have , 2)
+        print(f"Here your cash: ${change_money_computer}")
+        global cost
+        cost += change_money_computer
         return True
     else:
-        print("You dont have not enough money. Money Refund")
+        print("Not enough money to order this coffee. Refund....")
         return False
 
 
-def make_coffee(drink_name, order_ingredients):
-    for item in order_ingredients:
-        resource[item] -= order_ingredients[item]
-    print(f"Here is your {drink_name}")
+game = True
 
-
-cost = 0
-loop = True
-while loop:
-    choice = input("W do you want to drink? Latte, espresso or capuchino: ")
-    if choice == "off":
-        loop = False
-    elif choice == "report":
-        print(
-            f"Water: {resource["water"]}\n"
-            f"Milk: {resource["milk"]}\n"
-            f"Coffee: {resource["coffee"]}\n"
-            f"Money: {cost}"
-            )
+while game:
+    print("Can i help you about menu or something The coffee house?")
+    choice = input("Latte , espresso or capuchino ? Lets take one and enjoy: ")
+    if choice == "report":
+        print(f"Water: {resource['water']}")
+        print(f"Milk: {resource['milk']}")
+        print(f"Coffee: {resource['coffee']}")
+        print(f"Cost: {cost}")
+    elif choice == "off":
+        game = False
     else:
         drink = menu[choice]
-        if make_coffee_machine(drink['ingredients']):
-            total_user_have = money_machine()
-            if transfer_confirm(total_user_have, drink["cost"]):
-                make_coffee(choice, drink["ingredients"])
-
+        if make_coffee(drink["ingredients"]):
+            cash_general = cash_machine()
+            if transfer_cash(cash_general,drink["cost"]):
+                coffee_machine(choice,drink["ingredients"])
