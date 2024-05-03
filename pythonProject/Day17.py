@@ -13,7 +13,7 @@
 # print(BMW_Car.speed_car(190))
 
 from ExDay17.question import question_data
-from ExDay17.question_model import Question
+from ExDay17.question_model import Question, QuizzBrain
 
 question_bank = []
 for question in question_data:
@@ -21,5 +21,9 @@ for question in question_data:
     question_answer = question["answer"]
     new_question = Question(question_text,question_answer)
     question_bank.append(new_question)
-print(question_bank[0].Ianswer)
+
+
+quizz = QuizzBrain(question_bank)
+while quizz.still_has_question():
+    quizz.quizz()
 
