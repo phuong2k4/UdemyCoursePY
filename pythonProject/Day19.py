@@ -2,19 +2,47 @@
 from turtle import *
 
 def move_foward():
-    forward(50)
+    forward(20)
 def turn_right():
-    right(90)
-    forward(50)
+    setheading(heading()-10)
 
 def turn_left():
-    left(90)
-    forward(50)
+    setheading(heading() + 10)
+
+def move_backward():
+    right(180)
+    forward(20)
 screen = Screen()
 
-onkey(key="space", fun= move_foward)
-onkey(key="Right", fun= turn_right)
-onkey(key="Left", fun= turn_left)
+# onkey(move_foward, "w")
+# onkey(move_backward, "s")
+# onkey(turn_left, "a")
+# onkey(turn_right, "d")
+
+Jones = Turtle()
+Ethan = Turtle()
+David = Turtle()
+Travis = Turtle()
+
+Jones.color("red")
+Ethan.color("blue")
+David.color("violet")
+Travis.color("brown")
+
+Jones.setheading(220)
+Jones.forward(250)
+
+David.setheading(200)
+David.forward(250)
+
+Travis.setheading(180)
+Travis.forward(250)
+
+Ethan.setheading(160)
+Ethan.forward(250)
+
+
+
 
 listen()
 screen.exitonclick()
