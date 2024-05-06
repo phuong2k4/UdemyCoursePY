@@ -19,30 +19,16 @@ screen = Screen()
 # onkey(turn_left, "a")
 # onkey(turn_right, "d")
 
-Jones = Turtle()
-Ethan = Turtle()
-David = Turtle()
-Travis = Turtle()
+screen.setup(500,400)
+screen.textinput("Choose one, make a bet" , "Which turtle will win this race?")
 
-Jones.color("red")
-Ethan.color("blue")
-David.color("violet")
-Travis.color("brown")
+colors = ["red","yellow","blue","black","green"]
 
-Jones.setheading(220)
-Jones.forward(250)
-
-David.setheading(200)
-David.forward(250)
-
-Travis.setheading(180)
-Travis.forward(250)
-
-Ethan.setheading(160)
-Ethan.forward(250)
-
-
-
+for turtle_,i in range(0, 5):
+    display = Turtle("turtle")
+    display.penup()
+    y = 30 * i
+    display.goto(-230, y)
 
 listen()
 screen.exitonclick()
