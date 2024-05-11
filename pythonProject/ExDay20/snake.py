@@ -16,11 +16,17 @@ class Snake():
         self.head = self.move[0]
     def snake_initialization(self):
         for steps in step_by_step:
-            snake = Turtle("square")
-            snake.color("white")
-            snake.penup()
-            snake.goto(steps)
-            self.move.append(snake)
+            self.add_segment(steps)
+
+    def add_segment(self, steps):
+        snake = Turtle("square")
+        snake.color("white")
+        snake.penup()
+        snake.goto(steps)
+        self.move.append(snake)
+
+    def when_hit_food(self):
+        self.add_segment(self.move[-1].position())
 
     def move_Snake(self):
         for steps in range(len(self.move)-1, 0, -1):
