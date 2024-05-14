@@ -4,11 +4,11 @@ from turtle import *
 class BatBaseBall(Turtle):
     def __init__(self,position):
         super().__init__()
-        bat = Turtle("square")
-        bat.color("white")
-        bat.shapesize(10,2)
-        bat.penup()
-        bat.goto(position)
+        self.shape("square")
+        self.color("white")
+        self.shapesize(10,2)
+        self.penup()
+        self.goto(position)
 
 
     def goup(self):

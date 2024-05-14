@@ -1,16 +1,14 @@
 
 from turtle import *
 
-class Line():
+class Line(Turtle):
     def __init__(self):
-        self.dash()
+        super().__init__()
+        self.penup()
+        self.color("white")
+        self.goto(0,-800)
+        self.pendown()
+        self.goto(0,800)
+        self.penup()
 
 
-    def dash(self):
-        Turtle()
-        hideturtle()
-        penup()
-        color("white")
-        goto(0,-800)
-        pendown()
-        goto(0,800)
