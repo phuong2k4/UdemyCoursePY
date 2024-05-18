@@ -27,6 +27,7 @@ game = True
 while game:
     main.update()
     ball.move()
-
+    if ball.ycor() > 800 or ball.ycor() < -800:
+        ball.bounce()
 
 main.exitonclick()
