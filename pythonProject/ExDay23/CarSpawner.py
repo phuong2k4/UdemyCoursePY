@@ -3,14 +3,15 @@ from turtle import Turtle
 
 COLORS = ["red", "blue", "green", "brown", "yellow", "purple"]
 START_DISTANCE = 0.1
-MOVE_INCREMENT= 10
+MOVE_INCREMENT= 0.3
 
-class carManager:
+class carManager():
     def __init__(self):
         self.all_car = []
+        self.speed = START_DISTANCE
     def spawn(self):
         spawn_in_per = random.randint(1,1000)
-        if spawn_in_per == 1:
+        if spawn_in_per == 10:
             for car_define in COLORS:
                 car_define = Turtle()
                 car_define.shape("square")
@@ -23,5 +24,7 @@ class carManager:
 
     def move_car(self):
         for car in self.all_car:
+            car.backward(self.speed)
 
-            car.backward(START_DISTANCE)
+    def define_car(self):
+        self.speed += MOVE_INCREMENT
