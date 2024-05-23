@@ -8,9 +8,10 @@ UP = 90
 DOWN = 270
 RIGHT = 0
 LEFT = 180
-class Snake():
+class Snake(Turtle):
 
     def __init__(self):
+        super().__init__()
         self.move = []
         self.snake_initialization()
         self.head = self.move[0]
@@ -47,3 +48,10 @@ class Snake():
     def left(self):
         if self.head.heading() != RIGHT:
             self.head.setheading(LEFT)
+    def respawn(self):
+        for part in self.move:
+            part.goto(1000,1000)
+        self.move.clear()
+        self.snake_initialization()
+        self.head = self.move[0]
+
