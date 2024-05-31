@@ -114,7 +114,7 @@
 
 from replit import clear
 
-from ExtentionD9 import art
+from ExDay9 import art
 print(art.logo)
 
 bid_of_name = {}

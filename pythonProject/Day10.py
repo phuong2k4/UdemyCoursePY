@@ -37,7 +37,7 @@
 
 #solution Caculator:
 
-from ExtentionD10 import art
+from ExDay10 import art
 def add(num1, num2):
     return num1 + num2
 def sub(num1, num2):
