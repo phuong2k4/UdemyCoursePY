@@ -14,8 +14,8 @@
 
 import pandas
 
-data = pandas.read_csv("ExDay25/DataWeather.csv")
-data_dict = data.to_dict()
+# data = pandas.read_csv("ExDay25/DataWeather.csv")
+# data_dict = data.to_dict()
 
 
 # sum1 =0
@@ -53,10 +53,29 @@ data_dict = data.to_dict()
 
 
 # data frame from scratch
-new_data = {
-    "students": ["Amy", "James", "Angela"],
-    "scores": [76, 56, 65]
-}
+# new_data = {
+#     "students": ["Amy", "James", "Angela"],
+#     "scores": [76, 56, 65]
+# }
+#
+# data_n = pandas.DataFrame(new_data)
+# data_n.to_csv("ExDay25/new_data.csv")
 
-data_n = pandas.DataFrame(new_data)
-data_n.to_csv("ExDay25/new_data.csv")
+# 004 challenge:
+data = pandas.read_csv("ExDay25/2018-data-nyc.csv")
+
+# export_file = pandas.DataFrame(furcolor_data)
+grey_count = len(data[data["Primary Fur Color"] == "Grey"])
+red_count = len(data[data["Primary Fur Color"] == "Red"])
+black_count = len(data[data["Primary Fur Color"] == "Black"])
+
+fur_color = {
+    "Fur color": ["Grey", "Red", "Black"],
+    "Count": [
+        grey_count,
+        red_count,
+        black_count
+    ]
+}
+data_export = pandas.DataFrame(fur_color)
+data_export.to_csv("ExDay25/ExportFile.csv")
