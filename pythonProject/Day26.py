@@ -52,8 +52,8 @@ student_dict = {
 # for (key, value) in student_dict.items():
 #     print(f"{key} and {value}")
 
-import pandas
-student_data_frame = pandas.DataFrame(student_dict)
+# import pandas
+# student_data_frame = pandas.DataFrame(student_dict)
 # print(student_data_frame)
 
 # Loop through a data frame
@@ -61,5 +61,19 @@ student_data_frame = pandas.DataFrame(student_dict)
 #     print(value)
 
 # Loop through rows of a data frame
-for (index, rows) in student_data_frame.iterrows():
-    print(rows.student)
+# for (index, rows) in student_data_frame.iterrows():
+#     print(rows.student)
+
+# solution End Day 26
+
+import pandas
+
+data = pandas.read_csv("ExDay26/nato_alphabet.csv")
+convert_dict = data.to_dict()
+
+format_data = {row.letter:row.code for (index, row) in data.iterrows()}
+
+print(format_data)
+word_user_typed = input("Enter a word: ").upper()
+split_character = {letter:format_data[letter] for letter in word_user_typed}
+print(split_character)
