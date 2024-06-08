@@ -105,7 +105,7 @@ while len(states_correct) < 50:
         tur.goto(int(states.x), int(states.y))
         tur.write(answer_state)
     if answer_state == "exit":
-        missing_state = []
+        missing_state = [state for state in data_us_states.state.to_list() if state not in states_correct]
         for state in data_us_states.state.to_list():
             if state not in states_correct:
                 missing_state.append(state)
