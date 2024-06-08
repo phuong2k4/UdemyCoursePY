@@ -69,12 +69,12 @@ student_dict = {
 import pandas
 
 data = pandas.read_csv("ExDay26/nato_alphabet.csv")
-convert_dict = data.to_dict()
 
-format_data = {row.letter:row.code for (index, row) in data.iterrows()}
+export_data = {row.letter:row.code for (index, row) in data.iterrows()}
 
-print(format_data)
-word_user_typed = input("Enter a word: ").upper()
-split_character = {letter:format_data[letter] for letter in word_user_typed}
-print(split_character)
+user_name = input("Enter your name: ").upper()
+
+solution = {character:export_data[character] for character in user_name}
+
+print(solution)
 # end
