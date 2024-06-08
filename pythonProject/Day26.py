@@ -77,3 +77,4 @@ print(format_data)
 word_user_typed = input("Enter a word: ").upper()
 split_character = {letter:format_data[letter] for letter in word_user_typed}
 print(split_character)
+# end
