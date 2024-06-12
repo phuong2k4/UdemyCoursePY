@@ -7,7 +7,7 @@ window.minsize(500,500)
 
 # def add(*args):
 #     tong = 0
-#     for n in args:
+    #     for n in args:
 #         tong += n
 #     print(tong)
 # add(1,2,3,4,5)
