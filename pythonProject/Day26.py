@@ -1,4 +1,4 @@
-# List comrehension
+# List comprehension
 
 # Normal loop list
 # numbers = [1, 2, 3]
