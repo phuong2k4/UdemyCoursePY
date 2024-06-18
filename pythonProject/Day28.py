@@ -63,7 +63,9 @@ canvas = Canvas(width=400, height=400,bg=YELLOW,highlightthickness=0)
 tomato_img = PhotoImage(file="ExDay28/tomato.png")
 canvas.create_image(200,200,image=tomato_img)
 timer_countdown = canvas.create_text(210,190, text="00:00",fill="white",font=(FONT_NAME,45,"bold"))
+
 canvas.grid(column=1,row=1)
+
 
 # call function
 
