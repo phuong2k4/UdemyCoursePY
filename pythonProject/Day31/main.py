@@ -2,71 +2,59 @@ import random
 from tkinter import *
 import pandas
 
+randomCard = {}
 BACKGROUND_COLOR = "#B1DDC6"
-currentCard = {}
-
-
-# ui setup
-window = Tk()
-window.title("Flash")
-window.config(padx=50,pady=50,bg=BACKGROUND_COLOR)
-
-
 # read file
 try:
-    data = pandas.read_csv("word_learn.csv")
+    data = pandas.read_csv("data_know.csv")
     convert = data.to_dict(orient="records")
 except:
     data = pandas.read_csv("language.csv")
     convert = data.to_dict(orient="records")
-
-# function
-
-
+# button
 def changeCard():
+    canvas.itemconfig(card,image=card_back)
     canvas.itemconfig(card_title, text="English",fill="white")
-    canvas.itemconfig(card_text, text=currentCard["english"],fill="white")
-    canvas.itemconfig(card_backgr, image=card_back)
-def next():
-    global currentCard,flip_time
-    window.after_cancel(flip_time)
-    currentCard = random.choice(convert)
+    canvas.itemconfig(card_content,text=randomCard["english"],fill="white")
+
+def next_card():
+    global randomCard,flip
+    window.after_cancel(flip)
+    randomCard = random.choice(convert)
+    canvas.itemconfig(card, image=card_front)
     canvas.itemconfig(card_title, text="French",fill="black")
-    canvas.itemconfig(card_text, text=currentCard["french"],fill="black")
-    canvas.itemconfig(card_backgr,image=card_front)
-    flip_time=window.after(3000, func=changeCard)
+    canvas.itemconfig(card_content,text=randomCard["french"],fill="black")
+    flip = window.after(3000,func=changeCard)
 
-def is_know():
-    convert.remove(currentCard)
-    data_know = pandas.DataFrame(convert)
-    data_know.to_csv("work_learn.csv", index=False)
-    next()
 
-flip_time = window.after(3000, func=changeCard)
-# img ui
-canvas = Canvas(width=800, height=526,highlightthickness=0,bg=BACKGROUND_COLOR)
-# img back
+def know_card():
+    convert.remove(randomCard)
+    card_know = pandas.DataFrame(convert)
+    card_know.to_csv("data_know.csv")
+    next_card()
+# ui setup
+window = Tk()
+window.title("Flash")
+window.config(padx=50,pady=50,bg=BACKGROUND_COLOR)
+flip = window.after(3000,func=changeCard)
+canvas = Canvas(width=800,height=526,bg=BACKGROUND_COLOR,highlightthickness=0)
 card_back = PhotoImage(file="img/card_back.png")
-# img front
 card_front = PhotoImage(file="img/card_front.png")
-card_backgr= canvas.create_image(400, 263, image=card_front)
-canvas.grid(column=0, row=0, columnspan=2)
+card = canvas.create_image(400,263,image=card_front)
+canvas.grid(column=0,row=0,columnspan=2)
 
+# text
+card_title = canvas.create_text(400,63,text="", font=("JetBrains Mono",45,"bold"))
+card_content = canvas.create_text(400,263,text="", font=("JetBrains Mono",30,"bold"))
 
-# text UI
-card_title=canvas.create_text(400,63,text="", font=("JetBrains Mono",40, "bold"))
-card_text=canvas.create_text(400,263,text="" , font=("JetBrains Mono",30, "bold"))
-# button UI
-wrongPng = PhotoImage(file="img/wrong.png")
-wrongButton = Button(image=wrongPng,command=next)
-wrongButton.grid(column=0,row=1)
-# wrongButton.place(x=300,y=750)
+know_button = PhotoImage(file= "img/right.png")
+button_know = Button(image=know_button,command=know_card)
+button_know.grid(column=1,row=1)
 
-rightPng = PhotoImage(file="img/right.png")
-rightButton = Button(image=rightPng,command=is_know)
-# rightButton.place(x=800,y=750)
-rightButton.grid(column=1,row=1)
+dknow_button = PhotoImage(file="img/wrong.png")
+button_dknow = Button(image=dknow_button,command=next_card)
+button_dknow.grid(column=0,row=1)
 
-next()
+next_card()
 window.mainloop()
 
