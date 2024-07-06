@@ -58,3 +58,4 @@ print(response_update_value.text)
 graph_delete_value = f"{pixela_url}/{username}/graphs/{idgraph}/{strftime}"
 response_delete_value = requests.delete(url=graph_put_value,json=value_update,headers=header)
 print(response_delete_value.text)
+#update debug
