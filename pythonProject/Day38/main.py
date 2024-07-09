@@ -1,13 +1,18 @@
 import requests
 import json
 from datetime import datetime
-
+from requests.auth import HTTPBasicAuth
 # authorize
-app_ID = "ur id"
-app_Key = "ur key"
+app_ID = ""
+app_Key = ""
 
+# authentication basic
+UserName = ""
+passWord = ""
+basic_key = ""
+your_bearer_key = ""
 # url use sheet
-URL_sheet = "https://api.sheety.co/yoursheet"
+URL_sheet = "https://api.sheety.co/"
 
 GENDER = "MAN"
 WEIGHT_KG = 51
@@ -34,10 +39,17 @@ response_track_api = requests.post(
 )
 
 data = response_track_api.json()
-
 # authentication
+# ---basic---
+basic = HTTPBasicAuth(UserName,passWord)
+autho = f"Basic {basic_key}"
 
-response_sheety_get = requests.get(url=URL_sheet)
+#  ---bearer Token---
+header = {
+    "Authorization" : f"Bearer {your_bearer_key}"
+}
+
+response_sheety_get = requests.get(url=URL_sheet, headers=header)
 print(response_sheety_get.status_code)
 date = datetime.now()
 for value in data["exercises"]:
@@ -50,5 +62,5 @@ for value in data["exercises"]:
           "calories": value["nf_calories"],
         }
     }
-    response_sheety_add = requests.post(url=URL_sheet, json=add_value)
+    response_sheety_add = requests.post(url=URL_sheet, json=add_value, headers=header)
     print(response_sheety_add.status_code)
