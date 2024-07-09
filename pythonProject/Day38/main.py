@@ -3,11 +3,11 @@ import json
 from datetime import datetime
 
 # authorize
-app_ID = "94d6c2ed"
-app_Key = "24da69d255eb9b934aac2ec9c1af40da"
+app_ID = "ur id"
+app_Key = "ur key"
 
 # url use sheet
-URL_sheet = "https://api.sheety.co/73d4550fa5122eb2b6e85ac737d5c7a0/workourTracking/trangTính1"
+URL_sheet = "https://api.sheety.co/yoursheet"
 
 GENDER = "MAN"
 WEIGHT_KG = 51
