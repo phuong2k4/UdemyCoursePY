@@ -2,8 +2,8 @@
 import os
 from twilio.rest import Client
 
-API_SID = "ACd99e0cb0a49bbdf7db6ade94c0d6943b"
-AUTH_TOKEN = "e5bec90aaa60b3b618201169e9b07da4"
+API_SID = ""
+AUTH_TOKEN = ""
 FROM_PHONE = "+16283454367"
 TO_PHONE = "+840964032988"
 
