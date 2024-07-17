@@ -5,5 +5,7 @@ from data_manager import DataManager
 datamanager = DataManager()
 datamanager.data()
 
-send = NotificationManager()
-send.sendMessage()
+dataput = datamanager.putdata()
+
+# send = NotificationManager()
+# send.sendMessage()
